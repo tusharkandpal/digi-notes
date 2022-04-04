@@ -1,0 +1,59 @@
+/* || HOEMPAGE */
+.homepage {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+}
+.homepage-main {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.homepage-header {
+  font-size: 3rem;
+  justify-content: flex-end;
+}
+.homepage-sub-headers {
+  margin-top: 5rem;
+}
+.homepage-sub-header {
+  font-size: 1.8rem;
+}
+.highlight-text {
+  color: var(--primary-color);
+}
+.homepage-text {
+  font-size: 1.2rem;
+  max-width: 25rem;
+  margin-top: 1rem;
+}
+.homepage-buttons {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.homepage-signup-btn {
+  font-weight: bold;
+  color: var(--nav-title-color);
+  background-color: var(--primary-color);
+}
+.homepage-login-btn {
+  color: var(--primary-color);
+  margin: 0.5rem;
+}
+.homepage-signup-btn:hover {
+  background-color: var(--card-discount-color);
+}
+.homepage-img {
+  max-width: 30rem;
+}
+
+/* || MEDIA QUERIES */
+@media screen and (max-width: 1030px) {
+  .homepage {
+    flex-direction: column;
+  }
+}
+
