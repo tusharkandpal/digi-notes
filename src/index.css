@@ -1,0 +1,21 @@
+/* -------------- || IMPORTS ---------------- */
+@import url("https://wings-ui.netlify.app/components/component.css");
+
+/* || UNIVERSAL CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* || ROOT CSS */
+:root {
+  --primary-color: #47b365;
+}
+
+/* || UTILITIES */
+a {
+  text-decoration: none;
+  color: black;
+}
+
