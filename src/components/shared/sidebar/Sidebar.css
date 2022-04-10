@@ -5,7 +5,6 @@
   flex: 0 0 20rem;
   min-height: 94vh;
   justify-content: space-between;
-  background-color: var(--primary-color);
 }
 .sidebar-list {
   list-style: none;
@@ -14,18 +13,18 @@
   display: flex;
   align-items: center;
   padding: 0.8rem;
-  margin: 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 .sidebar-item:hover {
-  background-color: white;
+  background-color: var(--nav-icon-color);
 }
 .sidebar-label {
   margin-left: 0.5rem;
 }
 .new-note-item {
   text-align: center;
-  background-color: green;
-  color: white;
+  background-color: var(--status-online);
+  color: var(--nav-title-color);
   padding: 0.8rem;
   margin: 0 0.8rem;
   cursor: pointer;
@@ -41,8 +40,4 @@
   display: flex;
   align-items: center;
 }
-.active-item {
-  background-color: white;
-}
-
 

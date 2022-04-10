@@ -1,5 +1,5 @@
 import "./Note.css";
-import { Nav, Sidebar } from "../../components/components";
+import { Nav, Sidebar, Search, TextEditor } from "../../components/components";
 
 export function Note() {
   return (
@@ -7,6 +7,14 @@ export function Note() {
       <Nav />
       <div className="note-main">
         <Sidebar />
+        <div className="note-section">
+          <Search />
+          <div className="note-gallery">
+            <TextEditor />
+            <TextEditor />
+            <TextEditor />
+          </div>
+        </div>
       </div>
     </div>
   );

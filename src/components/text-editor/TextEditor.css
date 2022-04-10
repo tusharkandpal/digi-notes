@@ -1,0 +1,33 @@
+/* || TEXT EDITOR */
+.text-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--nav-title-color);
+  min-height: 10rem;
+  max-width: 25rem;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.3rem;
+}
+.text-editor-section {
+  display: flex;
+  justify-content: space-between;
+}
+.note-header,
+.note-body {
+  margin: 0.3rem 0;
+}
+.text-editor-footer {
+  display: flex;
+  justify-content: space-between;
+}
+.note-icon,
+.note-created-date {
+  color: var(--modal-icon-color);
+}
+.note-icon {
+  margin-left: 0.8rem;
+  cursor: pointer;
+}
+

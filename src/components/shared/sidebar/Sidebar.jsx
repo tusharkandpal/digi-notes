@@ -8,12 +8,15 @@ import { CgProfile } from "react-icons/cg";
 import { BsArchive, BsTrash, BsPersonCircle } from "react-icons/bs";
 
 export function Sidebar() {
+
+  const activeStyleHandler = ({isActive}) => ({"color": isActive ? "green" : ""})
+
   return (
     <IconContext.Provider value={{ size: 30 }}>
       <div className="sidebar">
         <ul className="sidebar-list">
-          <NavLink to="/note">
-            <li className="sidebar-item active-item">
+          <NavLink to="/note" style={activeStyleHandler}>
+            <li className="sidebar-item">
               <BiHome /> <span className="sidebar-label">Home</span>
             </li>
           </NavLink>
