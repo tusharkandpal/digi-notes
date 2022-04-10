@@ -1,0 +1,48 @@
+/* || SIDEBAR */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 20rem;
+  min-height: 94vh;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+}
+.sidebar-list {
+  list-style: none;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+}
+.sidebar-item:hover {
+  background-color: white;
+}
+.sidebar-label {
+  margin-left: 0.5rem;
+}
+.new-note-item {
+  text-align: center;
+  background-color: green;
+  color: white;
+  padding: 0.8rem;
+  margin: 0 0.8rem;
+  cursor: pointer;
+}
+
+/* || PROFILE */
+.profile-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-item {
+  display: flex;
+  align-items: center;
+}
+.active-item {
+  background-color: white;
+}
+
+
