@@ -1,0 +1,22 @@
+/* || SEARCH */
+.search-addon {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  max-width: 25rem;
+  width: 100%;
+  background-color: var(--nav-title-color);
+  margin: 0.5rem;
+}
+.search-input {
+  padding: 0.4rem;
+  border: 0;
+  outline: transparent;
+}
+.filter-icon {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+

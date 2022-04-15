@@ -1,0 +1,21 @@
+/* || NOTE */
+.note-main {
+  display: flex;
+}
+.note-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  background-color: var(--nav-icon-color);
+}
+.note-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1.2rem;
+  gap: 0.8rem;
+}
+
+
