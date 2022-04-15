@@ -24,13 +24,13 @@ export const Homepage = () => {
           <Link to="/" className="homepage-signup-btn btn btn-sm primary">
             Join Now
           </Link>
-          <Link to="/" className="homepage-login-btn">
+          <Link to="/login" className="homepage-login-btn">
             Already have an account ?
           </Link>
         </div>
       </div>
       <img
-        class="homepage-img img-responsive"
+        className="homepage-img img-responsive"
         src="./assets/homepage-img.svg"
         alt="homepage-img"
       />

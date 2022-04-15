@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Nav = () => {
   return (
     <nav className="navbar">
-      <Link to="/">
+      <Link to="/note">
         <h3 className="brand-name">
           <span className="brand-first-name">Digi</span> Notes
         </h3>
@@ -12,3 +12,4 @@ export const Nav = () => {
     </nav>
   );
 };
+

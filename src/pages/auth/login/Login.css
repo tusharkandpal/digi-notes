@@ -1,0 +1,44 @@
+/* ------------------------- || LOGIN MAIN ----------------------- */
+.login-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  min-height: 85vh;
+  background-color: var(--component-bg-color);
+}
+
+/* ------------------ || FORM CONTAINER ------------------ */
+.form-container {
+  padding: 1.5rem 3rem;
+  align-items: center;
+}
+.login-header,
+.form-btn {
+  margin-bottom: 1.5rem;
+}
+.form-btn {
+  background-color: var(--primary-color);
+  color: var(--nav-title-color);
+}
+.login-header,
+.signup-link {
+  text-align: center;
+}
+.form-invalid-message {
+  font-size: small;
+}
+.form-link {
+  text-decoration: none;
+  margin-left: 2rem;
+}
+.form-error-message {
+  padding: 0.5rem;
+  color: var(--invalid-color);
+}
+
+/* || LINK COLOR OVERRIDE */
+.login-main a {
+    color: var(--card-discount-color);
+}
+
