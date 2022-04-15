@@ -12,8 +12,8 @@ const AuthProvider = ({ children }) => {
   const loginHandler = async (email, password) => {
     try {
       const { data } = await axios.post("/api/auth/login", {
-        email: email,
-        password: password,
+        email,
+        password,
       });
       authDispatch({ type: "LOGIN", payload: { user: data.foundUser } });
       localStorage.setItem("encodedToken", data.encodedToken);

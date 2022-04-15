@@ -8,7 +8,7 @@ export function Login() {
   const { authState, loginHandler } = useAuth();
   const { error } = authState;
 
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
 
     const form = e.target;
