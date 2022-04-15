@@ -1,15 +1,22 @@
 import "./Sidebar.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { BiHome } from "react-icons/bi";
 import { AiOutlineLogout } from "react-icons/ai";
 import { MdLabelOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { BsArchive, BsTrash, BsPersonCircle } from "react-icons/bs";
+import { useAuth } from "../../../context/context";
 
 export function Sidebar() {
+  const activeStyleHandler = ({ isActive }) => ({
+    color: isActive ? "green" : "",
+  });
 
-  const activeStyleHandler = ({isActive}) => ({"color": isActive ? "green" : ""})
+  const {
+    authState: { user },
+    logoutHandler,
+  } = useAuth();
 
   return (
     <IconContext.Provider value={{ size: 30 }}>
@@ -46,15 +53,15 @@ export function Sidebar() {
           </li>
         </ul>
         <div className="profile-list">
-          <div className="profile-item">
+          <p className="profile-item">
             <span className="avatar">
               <BsPersonCircle />
             </span>
-            Tushar Kandpal
-          </div>
-          <Link to="/logout">
-            <AiOutlineLogout style={{ marginRight: "2rem" }} />
-          </Link>
+            {user.firstName} {user.lastName}
+          </p>
+          <button className="logout-btn" onClick={logoutHandler}>
+            <AiOutlineLogout />
+          </button>
         </div>
       </div>
     </IconContext.Provider>
