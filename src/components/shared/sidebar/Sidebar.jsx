@@ -14,7 +14,9 @@ export function Sidebar() {
   });
 
   const {
-    authState: { user },
+    authState: {
+      user: { firstName, lastName },
+    },
     logoutHandler,
   } = useAuth();
 
@@ -57,7 +59,7 @@ export function Sidebar() {
             <span className="avatar">
               <BsPersonCircle />
             </span>
-            {user.firstName} {user.lastName}
+            {firstName} {lastName}
           </p>
           <button className="logout-btn" onClick={logoutHandler}>
             <AiOutlineLogout />
