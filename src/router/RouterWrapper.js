@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router";
-import { Homepage, Login, Note } from "../pages/pages";
+import { Homepage, Login, Notes } from "../pages/pages";
 
 export const RouterWrapper = () => {
   return (
     <Routes>
       <Route path="/" element={<Homepage />}></Route>
-      <Route path="/note" element={<Note />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/notes" element={<Notes />}></Route>
     </Routes>
   );
 };

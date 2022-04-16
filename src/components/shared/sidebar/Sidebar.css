@@ -3,8 +3,10 @@
   display: flex;
   flex-direction: column;
   flex: 0 0 20rem;
-  min-height: 94vh;
+  height: 94vh;
   justify-content: space-between;
+  position: sticky;
+  top: 2.7rem;
 }
 .sidebar-list {
   list-style: none;
@@ -34,7 +36,7 @@
 .profile-list {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding-bottom: 0.8rem;
 }
 .profile-item {
   display: flex;
@@ -43,7 +45,7 @@
 .logout-btn {
   background: transparent;
   border: none;
-  margin-right: 2rem;
+  margin-right: 1rem;
   cursor: pointer;
 }
 

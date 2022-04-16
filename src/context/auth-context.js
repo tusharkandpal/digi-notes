@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
       authDispatch({ type: "LOGIN", payload: { user: data.foundUser } });
       localStorage.setItem("encodedToken", data.encodedToken);
       localStorage.setItem("user", JSON.stringify(data.foundUser));
-      navigate("/note", { replace: true });
+      navigate("/notes", { replace: true });
     } catch (error) {
       authDispatch({ type: "FAILED", payload: { path: "Login" } });
     }

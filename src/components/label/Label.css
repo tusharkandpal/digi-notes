@@ -1,0 +1,14 @@
+/* || LABEL */
+.label-palette {
+  position: absolute;
+  top: 2rem;
+  left: 2.8rem;
+  align-items: center;
+  background-color: var(--black-shade-color);
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+}
+.input-label {
+  padding: 0.2rem;
+}
+

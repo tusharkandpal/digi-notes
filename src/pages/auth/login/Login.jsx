@@ -90,7 +90,7 @@ export function Login() {
               className="btn btn-sm outline outline-info guest-btn"
               onClick={guestLoginHandler}
             >
-              <BsPersonBadge /> Guest Login
+              <BsPersonBadge size={13} /> Guest Login
             </button>
           </div>
           <Link to="/signup">

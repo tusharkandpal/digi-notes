@@ -1,9 +1,14 @@
 /* ------------ || NAVBAR ---------------- */
-.brand-name {
-  font-size: 1.5rem;
-  margin: 0.5rem 0 0.5rem 3rem;
+.navbar {
+  padding: 0.5rem 0;
+  position: sticky;
+  top: 0;
 }
-
+.brand-name {
+  display: inline;
+  font-size: 1.5rem;
+  margin: 0.5rem 0 0.5rem 5rem;
+}
 .brand-first-name {
   color: var(--primary-color);
 }
