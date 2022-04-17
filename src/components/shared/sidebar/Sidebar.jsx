@@ -22,7 +22,7 @@ export function Sidebar({ setShowAddNote }) {
   return (
     <div className="sidebar">
       <ul className="sidebar-list">
-        <NavLink to="/note" style={activeStyleHandler}>
+        <NavLink to="/notes" style={activeStyleHandler}>
           <li className="sidebar-item">
             <BiHome /> <span className="sidebar-label">Home</span>
           </li>
