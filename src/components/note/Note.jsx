@@ -59,9 +59,9 @@ export function Note({ setShowAddNote, note, id }) {
           ))}
         </div>
         <div className="note-footer">
-          <p className="note-created-date">
+          <small className="note-created-date">
             created on {createdDate}
-          </p>
+          </small>
           <div className="note-icons">
             <FiEdit2 className="note-icon" onClick={editNoteHandler} />
             <BiArchiveIn className="note-icon" />
