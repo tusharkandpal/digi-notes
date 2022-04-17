@@ -14,8 +14,6 @@ export function Note({ setShowAddNote, note, id }) {
     noteDispatch({ type: "SET_EDIT_MODE", payload: { note: { ...note, id } } });
   };
 
-  const noteDate = new Date(createdDate);
-
   return (
     <div className="note" style={{ backgroundColor: color }}>
       <div className="note-section">
@@ -62,7 +60,7 @@ export function Note({ setShowAddNote, note, id }) {
         </div>
         <div className="note-footer">
           <p className="note-created-date">
-            created on {noteDate.toDateString()}{" "}
+            created on {createdDate}
           </p>
           <div className="note-icons">
             <FiEdit2 className="note-icon" onClick={editNoteHandler} />

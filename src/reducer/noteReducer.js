@@ -9,7 +9,7 @@ export const noteInitialState = {
 export const noteReducer = (state, { type, payload }) => {
   switch (type) {
     case "SET_NOTE":
-      return { ...state, content: payload.content, createdDate: new Date() };
+      return { ...state, content: payload.content, createdDate: (new Date()).toDateString() };
 
     case "SET_COLOR":
       return { ...state, color: payload.color };
