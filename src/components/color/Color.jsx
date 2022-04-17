@@ -1,7 +1,10 @@
 import "./Color.css";
-import { useNotes } from "../../context/context";
+import { useNotes, useDisplay } from "../../context/context";
 
-export const Color = ({ viewPopup }) => {
+export const Color = () => {
+  const {
+    displayState: { colorToggle },
+  } = useDisplay();
   const colors = [
     "#ffc7c7",
     "#f0e0ff",
@@ -17,7 +20,7 @@ export const Color = ({ viewPopup }) => {
   return (
     <div
       className="color-palette"
-      style={{ display: viewPopup === "color" ? "flex" : "none" }}
+      style={{ display: colorToggle ? "flex" : "none" }}
     >
       {colors.map((color) => (
         <span

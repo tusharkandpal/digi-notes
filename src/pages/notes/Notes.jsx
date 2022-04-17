@@ -1,5 +1,4 @@
 import "./Notes.css";
-import { useState } from "react";
 import {
   Nav,
   Sidebar,
@@ -10,7 +9,6 @@ import {
 import { useNotes } from "../../context/context";
 
 export function Notes() {
-  const [showAddNote, setShowAddNote] = useState(false);
   const { notes } = useNotes();
 
   const pinnedNotes = notes.filter(({ note }) => note.isPinned);
@@ -20,25 +18,17 @@ export function Notes() {
     <div className="notes">
       <Nav />
       <div className="notes-main">
-        <Sidebar setShowAddNote={setShowAddNote} />
+        <Sidebar />
         <div className="notes-section">
           <Search />
-          <TextEditor
-            showAddNote={showAddNote}
-            setShowAddNote={setShowAddNote}
-          />
+          <TextEditor />
           <div className="notes-gallery">
             {pinnedNotes.length !== 0 && (
               <>
                 <h2 className="notes-header">PINNED</h2>
                 <div className="pinned-notes">
                   {pinnedNotes.map(({ note, _id }) => (
-                    <Note
-                      note={note}
-                      id={_id}
-                      key={_id}
-                      setShowAddNote={setShowAddNote}
-                    />
+                    <Note note={note} id={_id} key={_id} />
                   ))}
                 </div>
               </>
@@ -48,12 +38,7 @@ export function Notes() {
                 <h2 className="notes-header">OTHERS</h2>
                 <div className="other-notes">
                   {otherNotes.map(({ note, _id }) => (
-                    <Note
-                      note={note}
-                      id={_id}
-                      key={_id}
-                      setShowAddNote={setShowAddNote}
-                    />
+                    <Note note={note} id={_id} key={_id} />
                   ))}{" "}
                 </div>
               </>

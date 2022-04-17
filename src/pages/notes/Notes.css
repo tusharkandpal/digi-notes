@@ -1,6 +1,7 @@
 /* || NOTE */
 .notes-main {
   display: flex;
+  min-height: 92.5vh;
 }
 .notes-section {
   display: flex;

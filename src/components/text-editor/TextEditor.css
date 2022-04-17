@@ -52,3 +52,10 @@
   cursor: pointer;
 }
 
+/* || MEDIA QUERIES */
+@media screen and (max-width: 500px) {
+  .text-editor {
+    max-width: 20rem;
+  }
+}
+

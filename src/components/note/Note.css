@@ -37,8 +37,19 @@
 .note-icon {
   margin-left: 0.8rem;
   cursor: pointer;
+  font-size: 20px;
 }
 .note li {
   margin-left: 2rem;
+}
+
+/* || MEDIA QUERIES */
+@media screen and (max-width: 500px) {
+  .note-container {
+    max-width: 14.5rem;
+  }
+  .note-icon {
+    font-size: 15px;
+  }
 }
 
