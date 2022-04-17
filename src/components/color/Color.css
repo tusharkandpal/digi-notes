@@ -1,0 +1,21 @@
+/* || COLOR */
+.color-palette {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  flex-wrap: wrap;
+  width: 8rem;
+  justify-content: center;
+  background-color: var(--black-shade-color);
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+  gap: 0.4rem;
+}
+.color {
+  position: static;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+

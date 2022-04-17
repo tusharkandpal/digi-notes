@@ -1,33 +1,52 @@
 /* || TEXT EDITOR */
 .text-editor {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--nav-title-color);
-  min-height: 10rem;
   max-width: 25rem;
   width: 100%;
-  padding: 0.8rem;
+  background-color: var(--nav-title-color);
   border-radius: 0.3rem;
+  padding: 0.5rem;
 }
-.text-editor-section {
-  display: flex;
-  justify-content: space-between;
+
+/* || QUILL */
+.ql-container {
+  min-height: 5rem;
 }
-.note-header,
-.note-body {
-  margin: 0.3rem 0;
+.ql-container.ql-snow {
+  border: transparent;
 }
+
+/* || TEXT EDITOR FOOTER */
 .text-editor-footer {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 0.5rem;
 }
-.note-icon,
-.note-created-date {
-  color: var(--modal-icon-color);
+.editor-buttons {
+  display: flex;
+  justify-content: center;
 }
-.note-icon {
-  margin-left: 0.8rem;
+.editor-icons {
+  position: relative;
+  top: 0;
+}
+
+/* || CHIPS */
+.chips-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.chip {
+  background-color: var(--nav-icon-color);
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+}
+.chip:hover {
+  background-color: var(--card-shadow-color);
+}
+.chip-icon {
+  vertical-align: middle;
   cursor: pointer;
 }
 

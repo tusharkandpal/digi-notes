@@ -1,7 +1,12 @@
 import "./Homepage.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/context";
 
 export const Homepage = () => {
+  const {
+    authState: { isLoggedIn },
+  } = useAuth();
+
   return (
     <div className="homepage">
       <div className="homepage-main">
@@ -21,12 +26,20 @@ export const Homepage = () => {
           </p>
         </div>
         <div className="homepage-buttons">
-          <Link to="/" className="homepage-signup-btn btn btn-sm primary">
-            Join Now
-          </Link>
-          <Link to="/login" className="homepage-login-btn">
-            Already have an account ?
-          </Link>
+          {isLoggedIn ? (
+            <Link to="/notes" className="homepage-signup-btn btn btn-sm primary">
+              Get Started
+            </Link>
+          ) : (
+            <>
+              <Link to="/" className="homepage-signup-btn btn btn-sm primary">
+                Join Now
+              </Link>
+              <Link to="/login" className="homepage-login-btn">
+                Already have an account ?
+              </Link>
+            </>
+          )}
         </div>
       </div>
       <img
@@ -36,6 +49,4 @@ export const Homepage = () => {
       />
     </div>
   );
-}
-
-
+};
