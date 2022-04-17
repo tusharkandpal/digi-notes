@@ -6,7 +6,7 @@ import { useNotes } from "../../context/context";
 import { VscSymbolColor } from "react-icons/vsc";
 import { MdOutlineLabel } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { Color, Label } from "../components";
+import { Color, Label, Priority } from "../components";
 
 export function TextEditor({ showAddNote, setShowAddNote }) {
   const [viewPopup, setViewPopup] = useState("");
@@ -96,6 +96,7 @@ export function TextEditor({ showAddNote, setShowAddNote }) {
           </button>
         </div>
         <div className="editor-icons">
+          <Priority />
           <VscSymbolColor
             className="note-icon"
             onClick={() => popupHandler("color")}

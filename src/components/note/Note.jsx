@@ -7,7 +7,7 @@ import { useNotes } from "../../context/context";
 
 export function Note({ setShowAddNote, note, id }) {
   const { noteDispatch, updateNoteHandler, deleteNoteHandler } = useNotes();
-  const { color, content, tags, createdDate, isPinned } = note;
+  const { color, content, priority, tags, createdDate, isPinned } = note;
 
   const editNoteHandler = () => {
     setShowAddNote(true);
@@ -41,6 +41,19 @@ export function Note({ setShowAddNote, note, id }) {
       </div>
       <div>
         <div className="chips-list">
+          <span
+            className="chip"
+            style={{
+              backgroundColor:
+                priority === "Low"
+                  ? "lightgreen"
+                  : priority === "Medium"
+                  ? "yellow"
+                  : "#f78080",
+            }}
+          >
+            {priority}
+          </span>
           {tags.map((tag) => (
             <span key={tag} className="chip">
               {tag}

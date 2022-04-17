@@ -27,23 +27,22 @@ export function Sidebar({ setShowAddNote }) {
             <BiHome /> <span className="sidebar-label">Home</span>
           </li>
         </NavLink>
-        <NavLink to="/label">
+        <NavLink to="/labels" style={activeStyleHandler}>
           <li className="sidebar-item">
             <MdLabelOutline /> <span className="sidebar-label">Labels</span>
           </li>
         </NavLink>
-        <NavLink to="/archive">
+        <NavLink to="/archives" style={activeStyleHandler}>
           <li className="sidebar-item">
             <BsArchive /> <span className="sidebar-label">Archive</span>
           </li>
         </NavLink>
-        <NavLink to="/trash">
+        <NavLink to="/trash" style={activeStyleHandler}>
           <li className="sidebar-item">
-            {" "}
             <BsTrash /> <span className="sidebar-label">Trash</span>
           </li>
         </NavLink>
-        <NavLink to="/profile">
+        <NavLink to="/profile" style={activeStyleHandler}>
           <li className="sidebar-item">
             <CgProfile /> <span className="sidebar-label">Profile</span>
           </li>

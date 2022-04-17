@@ -27,6 +27,8 @@
   justify-content: center;
 }
 .editor-icons {
+  display: flex;
+  justify-content: center;
   position: relative;
   top: 0;
 }
@@ -39,7 +41,7 @@
 .chip {
   background-color: var(--nav-icon-color);
   padding: 0.5rem;
-  margin-right: 0.5rem;
+  margin: 0.5rem 0.5rem 0 0;
   border-radius: 1rem;
 }
 .chip:hover {
