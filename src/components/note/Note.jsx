@@ -7,14 +7,12 @@ import { useNotes } from "../../context/context";
 
 export function Note({ setShowAddNote, note, id }) {
   const { noteDispatch, updateNoteHandler, deleteNoteHandler } = useNotes();
-  const { color, content, tags, createdDate, isPinned } = note;
+  const { color, content, priority, tags, createdDate, isPinned } = note;
 
   const editNoteHandler = () => {
     setShowAddNote(true);
     noteDispatch({ type: "SET_EDIT_MODE", payload: { note: { ...note, id } } });
   };
-
-  const noteDate = new Date(createdDate);
 
   return (
     <div className="note" style={{ backgroundColor: color }}>
@@ -41,6 +39,19 @@ export function Note({ setShowAddNote, note, id }) {
       </div>
       <div>
         <div className="chips-list">
+          <span
+            className="chip"
+            style={{
+              backgroundColor:
+                priority === "Low"
+                  ? "lightgreen"
+                  : priority === "Medium"
+                  ? "yellow"
+                  : "#f78080",
+            }}
+          >
+            {priority}
+          </span>
           {tags.map((tag) => (
             <span key={tag} className="chip">
               {tag}
@@ -49,7 +60,7 @@ export function Note({ setShowAddNote, note, id }) {
         </div>
         <div className="note-footer">
           <p className="note-created-date">
-            created on {noteDate.toDateString()}{" "}
+            created on {createdDate}
           </p>
           <div className="note-icons">
             <FiEdit2 className="note-icon" onClick={editNoteHandler} />

@@ -7,7 +7,7 @@ import {
   TextEditor,
   Note,
 } from "../../components/components";
-import { useNotes } from "../../context/notes-context";
+import { useNotes } from "../../context/context";
 
 export function Notes() {
   const [showAddNote, setShowAddNote] = useState(false);

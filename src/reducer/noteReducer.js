@@ -2,14 +2,14 @@ export const noteInitialState = {
   content: "",
   color: "",
   tags: [],
-  priority: "",
+  priority: "Low",
   isPinned: false,
 };
 
 export const noteReducer = (state, { type, payload }) => {
   switch (type) {
     case "SET_NOTE":
-      return { ...state, content: payload.content, createdDate: new Date() };
+      return { ...state, content: payload.content, createdDate: (new Date()).toDateString() };
 
     case "SET_COLOR":
       return { ...state, color: payload.color };
@@ -20,6 +20,12 @@ export const noteReducer = (state, { type, payload }) => {
         tags: state.tags.some((tag) => tag === payload.tag)
           ? state.tags
           : [...state.tags, payload.tag],
+      };
+
+    case "SET_PRIORITY":
+      return {
+        ...state,
+        priority: payload.priority,
       };
 
     case "SET_EDIT_MODE":
