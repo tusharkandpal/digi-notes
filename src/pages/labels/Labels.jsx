@@ -10,7 +10,6 @@ import {
 import { useNotes } from "../../context/context";
 
 export function Labels() {
-  const [showAddNote, setShowAddNote] = useState(false);
   const { notes } = useNotes();
 
   const allUniqueLabels = notes.reduce(
@@ -25,13 +24,10 @@ export function Labels() {
     <div className="notes">
       <Nav />
       <div className="notes-main">
-        <Sidebar setShowAddNote={setShowAddNote} />
+        <Sidebar />
         <div className="notes-section">
           <Search />
-          <TextEditor
-            showAddNote={showAddNote}
-            setShowAddNote={setShowAddNote}
-          />
+          <TextEditor />
           <div className="notes-gallery">
             {allUniqueLabels.length !== 0 &&
               allUniqueLabels.map((label) => (
@@ -45,7 +41,6 @@ export function Labels() {
                             note={note}
                             id={_id}
                             key={_id}
-                            setShowAddNote={setShowAddNote}
                           />
                         )
                     )}
