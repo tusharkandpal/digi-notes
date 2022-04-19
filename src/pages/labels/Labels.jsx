@@ -1,5 +1,5 @@
 import "./Labels.css";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import {
   Nav,
   Sidebar,
