@@ -61,6 +61,7 @@ const NotesProvider = ({ children }) => {
         noteState,
         noteDispatch,
         notes,
+        setNotes,
         addNoteHandler,
         updateNoteHandler,
         deleteNoteHandler,

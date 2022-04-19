@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { Homepage, Login, Notes, Labels } from "../pages/pages";
+import { Homepage, Login, Notes, Labels, Archives } from "../pages/pages";
 
 export const RouterWrapper = () => {
   return (
@@ -8,6 +8,7 @@ export const RouterWrapper = () => {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/notes" element={<Notes />}></Route>
       <Route path="/labels" element={<Labels />}></Route>
+      <Route path="/archives" element={<Archives />}></Route>
     </Routes>
   );
 };
