@@ -5,9 +5,13 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { MdLabelOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { BsArchive, BsTrash, BsPersonCircle } from "react-icons/bs";
-import { useAuth } from "../../../context/context";
+import { useAuth, useDisplay } from "../../../context/context";
 
-export function Sidebar({ setShowAddNote }) {
+export function Sidebar() {
+  const {
+    displayState: { sidebarToggle },
+    displayDispatch,
+  } = useDisplay();
   const activeStyleHandler = ({ isActive }) => ({
     color: isActive ? "green" : "",
   });
@@ -20,46 +24,79 @@ export function Sidebar({ setShowAddNote }) {
   } = useAuth();
 
   return (
-    <div className="sidebar">
+    <div
+      className="sidebar"
+      style={{ display: sidebarToggle ? "flex" : "none" }}
+    >
       <ul className="sidebar-list">
-        <NavLink to="/notes" style={activeStyleHandler}>
+        <NavLink
+          to="/notes"
+          style={activeStyleHandler}
+          onClick={() => displayDispatch({ type: "SIDEBAR_TOGGLE" })}
+        >
           <li className="sidebar-item">
-            <BiHome /> <span className="sidebar-label">Home</span>
+            <BiHome className="icon-size" />{" "}
+            <span className="sidebar-label">Home</span>
           </li>
         </NavLink>
-        <NavLink to="/labels" style={activeStyleHandler}>
+        <NavLink
+          to="/labels"
+          style={activeStyleHandler}
+          onClick={() => displayDispatch({ type: "SIDEBAR_TOGGLE" })}
+        >
           <li className="sidebar-item">
-            <MdLabelOutline /> <span className="sidebar-label">Labels</span>
+            <MdLabelOutline className="icon-size" />{" "}
+            <span className="sidebar-label">Labels</span>
           </li>
         </NavLink>
-        <NavLink to="/archives" style={activeStyleHandler}>
+        <NavLink
+          to="/archives"
+          style={activeStyleHandler}
+          onClick={() => displayDispatch({ type: "SIDEBAR_TOGGLE" })}
+        >
           <li className="sidebar-item">
-            <BsArchive /> <span className="sidebar-label">Archive</span>
+            <BsArchive className="icon-size" />{" "}
+            <span className="sidebar-label">Archive</span>
           </li>
         </NavLink>
-        <NavLink to="/trash" style={activeStyleHandler}>
+        <NavLink
+          to="/trash"
+          style={activeStyleHandler}
+          onClick={() => displayDispatch({ type: "SIDEBAR_TOGGLE" })}
+        >
           <li className="sidebar-item">
-            <BsTrash /> <span className="sidebar-label">Trash</span>
+            <BsTrash className="icon-size" />{" "}
+            <span className="sidebar-label">Trash</span>
           </li>
         </NavLink>
         <NavLink to="/profile" style={activeStyleHandler}>
           <li className="sidebar-item">
-            <CgProfile /> <span className="sidebar-label">Profile</span>
+            <CgProfile className="icon-size" />{" "}
+            <span className="sidebar-label">Profile</span>
           </li>
         </NavLink>
-        <li className="new-note-item" onClick={() => setShowAddNote(true)}>
+        <li
+          className="new-note-item"
+          onClick={() => {
+            displayDispatch({
+              type: "ADD_NOTE_TOGGLE",
+              payload: { addNoteToggle: true },
+            });
+            displayDispatch({ type: "SIDEBAR_TOGGLE" });
+          }}
+        >
           <h3 className="new-note">Create New Note</h3>
         </li>
       </ul>
       <div className="profile-list">
         <p className="profile-item">
           <span className="avatar">
-            <BsPersonCircle />
+            <BsPersonCircle className="icon-size" />
           </span>
           {firstName} {lastName}
         </p>
         <button className="logout-btn" onClick={logoutHandler}>
-          <AiOutlineLogout />
+          <AiOutlineLogout className="icon-size" />
         </button>
       </div>
     </div>

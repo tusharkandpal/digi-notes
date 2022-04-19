@@ -3,14 +3,15 @@ import { BsPin, BsPinAngleFill } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiArchiveIn } from "react-icons/bi";
-import { useNotes } from "../../context/context";
+import { useNotes, useDisplay } from "../../context/context";
 
-export function Note({ setShowAddNote, note, id }) {
+export function Note({ note, id }) {
   const { noteDispatch, updateNoteHandler, deleteNoteHandler } = useNotes();
   const { color, content, priority, tags, createdDate, isPinned } = note;
+  const { displayDispatch } = useDisplay();
 
   const editNoteHandler = () => {
-    setShowAddNote(true);
+    displayDispatch({ type: "ADD_NOTE_TOGGLE", payload: { addNoteToggle: true } });
     noteDispatch({ type: "SET_EDIT_MODE", payload: { note: { ...note, id } } });
   };
 

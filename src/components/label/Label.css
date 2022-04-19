@@ -2,7 +2,7 @@
 .label-palette {
   position: absolute;
   top: 2rem;
-  left: 2.8rem;
+  left: -3rem;
   align-items: center;
   background-color: var(--black-shade-color);
   padding: 0.5rem;

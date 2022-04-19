@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { useNotes } from "../../context/context";
+import { useNotes, useDisplay } from "../../context/context";
 import "./Label.css";
 
-export const Label = ({ viewPopup }) => {
+export const Label = () => {
+  const {
+    displayState: { labelToggle },
+  } = useDisplay();
   const [tag, setTag] = useState("");
   const { noteDispatch } = useNotes();
 
   const addTagHandler = (e) => {
-    if (e.keyCode === 13) {
+    if (tag && e.keyCode === 13) {
       noteDispatch({ type: "SET_TAG", payload: { tag } });
       setTag("");
     }
@@ -16,7 +19,7 @@ export const Label = ({ viewPopup }) => {
   return (
     <div
       className="label-palette"
-      style={{ display: viewPopup === "label" ? "flex" : "none" }}
+      style={{ display: labelToggle ? "flex" : "none" }}
     >
       <input
         type="text"

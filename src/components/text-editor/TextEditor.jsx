@@ -1,28 +1,37 @@
 import "react-quill/dist/quill.snow.css";
 import "./TextEditor.css";
-import { useState } from "react";
 import ReactQuill from "react-quill";
-import { useNotes } from "../../context/context";
+import { useDisplay, useNotes } from "../../context/context";
 import { VscSymbolColor } from "react-icons/vsc";
 import { MdOutlineLabel } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Color, Label, Priority } from "../components";
 
-export function TextEditor({ showAddNote, setShowAddNote }) {
-  const [viewPopup, setViewPopup] = useState("");
+export function TextEditor() {
+  const {
+    displayState: { addNoteToggle, colorToggle, labelToggle },
+    displayDispatch,
+  } = useDisplay();
   const { noteState, noteDispatch, addNoteHandler, updateNoteHandler } =
     useNotes();
   const { content, color, tags, id } = noteState;
 
-  if (!showAddNote) return null;
-
-  const popupHandler = (popupScreen) => {
-    if (viewPopup === popupScreen) setViewPopup("");
-    else setViewPopup(popupScreen);
-  };
+  if (!addNoteToggle) return null;
 
   const handleChange = (value) => {
     noteDispatch({ type: "SET_NOTE", payload: { content: value } });
+  };
+
+  const resetHandler = () => {
+    noteDispatch({ type: "RESET" });
+    displayDispatch({
+      type: "COLOR_TOGGLE",
+      payload: { colorToggle: false },
+    });
+    displayDispatch({
+      type: "LABEL_TOGGLE",
+      payload: { labelToggle: false },
+    });
   };
 
   const invalidNoteTypes = [
@@ -62,8 +71,7 @@ export function TextEditor({ showAddNote, setShowAddNote }) {
               className="btn btn-sm primary"
               onClick={() => {
                 updateNoteHandler(noteState);
-                noteDispatch({ type: "RESET" });
-                setViewPopup("");
+                resetHandler();
               }}
               disabled={invalidNoteTypes.includes(content) ? true : false}
             >
@@ -75,8 +83,7 @@ export function TextEditor({ showAddNote, setShowAddNote }) {
               className="btn btn-sm primary"
               onClick={() => {
                 addNoteHandler(noteState);
-                noteDispatch({ type: "RESET" });
-                setViewPopup("");
+                resetHandler();
               }}
               disabled={invalidNoteTypes.includes(content) ? true : false}
             >
@@ -87,9 +94,11 @@ export function TextEditor({ showAddNote, setShowAddNote }) {
             type="button"
             className="btn btn-sm outline outline-danger"
             onClick={() => {
-              setShowAddNote(false);
-              noteDispatch({ type: "RESET" });
-              setViewPopup("");
+              displayDispatch({
+                type: "ADD_NOTE_TOGGLE",
+                payload: { addNoteToggle: false },
+              });
+              resetHandler();
             }}
           >
             Close
@@ -99,14 +108,32 @@ export function TextEditor({ showAddNote, setShowAddNote }) {
           <Priority />
           <VscSymbolColor
             className="note-icon"
-            onClick={() => popupHandler("color")}
+            onClick={() => {
+              displayDispatch({
+                type: "COLOR_TOGGLE",
+                payload: { colorToggle: !colorToggle },
+              });
+              displayDispatch({
+                type: "LABEL_TOGGLE",
+                payload: { labelToggle: false },
+              });
+            }}
           />
-          <Color viewPopup={viewPopup} />
+          <Color />
           <MdOutlineLabel
             className="note-icon"
-            onClick={() => popupHandler("label")}
+            onClick={() => {
+              displayDispatch({
+                type: "LABEL_TOGGLE",
+                payload: { labelToggle: !labelToggle },
+              });
+              displayDispatch({
+                type: "COLOR_TOGGLE",
+                payload: { colorToggle: false },
+              });
+            }}
           />
-          <Label viewPopup={viewPopup} />
+          <Label />
         </div>
       </div>
     </div>
