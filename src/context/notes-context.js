@@ -10,7 +10,6 @@ import {
   getNotesService,
   addNoteService,
   updateNoteService,
-  deleteNoteService,
 } from "../services/services";
 import { useAuth } from "./context";
 
@@ -48,13 +47,6 @@ const NotesProvider = ({ children }) => {
     }
   };
 
-  const deleteNoteHandler = async (id) => {
-    const { data, status } = await deleteNoteService(id);
-    if (status === 200) {
-      setNotes(data.notes);
-    }
-  };
-
   return (
     <NotesContext.Provider
       value={{
@@ -64,7 +56,6 @@ const NotesProvider = ({ children }) => {
         setNotes,
         addNoteHandler,
         updateNoteHandler,
-        deleteNoteHandler,
       }}
     >
       {children}

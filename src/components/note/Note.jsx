@@ -4,23 +4,38 @@ import { BsPin, BsPinAngleFill } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiArchiveIn } from "react-icons/bi";
-import { MdUnarchive } from "react-icons/md";
-import { useNotes, useArchives, useDisplay } from "../../context/context";
+import { MdUnarchive, MdRestore, MdDeleteForever } from "react-icons/md";
+import {
+  useNotes,
+  useArchives,
+  useTrash,
+  useDisplay,
+} from "../../context/context";
 
 export function Note({ note, id }) {
-  const { noteDispatch, updateNoteHandler, deleteNoteHandler } = useNotes();
+  const { noteDispatch, updateNoteHandler } = useNotes();
   const { color, content, priority, tags, createdDate, isPinned } = note;
-  const { addArchiveHandler, restoreArchiveHandler, deleteArchiveHandler } =
-    useArchives();
+  const { addArchiveHandler, restoreArchiveHandler } = useArchives();
+  const {
+    moveNoteToTrashHandler,
+    moveArchiveToTrashHandler,
+    restoreFromTrashHandler,
+    deleteFromTrashHandler,
+  } = useTrash();
   const { pathname } = useLocation();
   const { displayDispatch } = useDisplay();
 
   const editNoteHandler = () => {
-    displayDispatch({ type: "ADD_NOTE_TOGGLE", payload: { addNoteToggle: true } });
+    displayDispatch({
+      type: "ADD_NOTE_TOGGLE",
+      payload: { addNoteToggle: true },
+    });
     noteDispatch({ type: "SET_EDIT_MODE", payload: { note: { ...note, id } } });
   };
 
-  const isEitherNotesOrLabelsPage = ["/notes","/labels"].includes(pathname);
+  const isEitherNotesOrLabelsPage = ["/notes", "/labels"].includes(pathname);
+
+  const noteCreatedDate = (new Date(createdDate)).toDateString();
 
   return (
     <div className="note" style={{ backgroundColor: color }}>
@@ -29,21 +44,22 @@ export function Note({ note, id }) {
           className="note-container"
           dangerouslySetInnerHTML={{ __html: content }}
         ></div>
-        {isEitherNotesOrLabelsPage && (isPinned ? (
-          <BsPinAngleFill
-            className="note-icon"
-            onClick={() => {
-              updateNoteHandler({ ...note, id, isPinned: !isPinned });
-            }}
-          />
-        ) : (
-          <BsPin
-            className="note-icon"
-            onClick={() => {
-              updateNoteHandler({ ...note, id, isPinned: !isPinned });
-            }}
-          />
-        ))}
+        {isEitherNotesOrLabelsPage &&
+          (isPinned ? (
+            <BsPinAngleFill
+              className="note-icon"
+              onClick={() => {
+                updateNoteHandler({ ...note, id, isPinned: !isPinned });
+              }}
+            />
+          ) : (
+            <BsPin
+              className="note-icon"
+              onClick={() => {
+                updateNoteHandler({ ...note, id, isPinned: !isPinned });
+              }}
+            />
+          ))}
       </div>
       <div>
         <div className="chips-list">
@@ -67,9 +83,7 @@ export function Note({ note, id }) {
           ))}
         </div>
         <div className="note-footer">
-          <small className="note-created-date">
-            created on {createdDate}
-          </small>
+          <small className="note-created-date">created on {noteCreatedDate}</small>
           <div className="note-icons">
             {isEitherNotesOrLabelsPage ? (
               <>
@@ -80,10 +94,10 @@ export function Note({ note, id }) {
                 />
                 <AiOutlineDelete
                   className="note-icon"
-                  onClick={() => deleteNoteHandler(id)}
+                  onClick={() => moveNoteToTrashHandler({ ...note, id })}
                 />
               </>
-            ) : (
+            ) : pathname === "/archives" ? (
               <>
                 <MdUnarchive
                   className="note-icon"
@@ -91,7 +105,18 @@ export function Note({ note, id }) {
                 />
                 <AiOutlineDelete
                   className="note-icon"
-                  onClick={() => deleteArchiveHandler(id)}
+                  onClick={() => moveArchiveToTrashHandler({ ...note, id })}
+                />
+              </>
+            ) : (
+              <>
+                <MdRestore
+                  className="note-icon"
+                  onClick={() => restoreFromTrashHandler({ ...note, id })}
+                />
+                <MdDeleteForever
+                  className="note-icon"
+                  onClick={() => deleteFromTrashHandler(id)}
                 />
               </>
             )}
