@@ -20,6 +20,8 @@ export function Note({ note, id }) {
     noteDispatch({ type: "SET_EDIT_MODE", payload: { note: { ...note, id } } });
   };
 
+  const isEitherNotesOrLabelsPage = ["/notes","/labels"].includes(pathname);
+
   return (
     <div className="note" style={{ backgroundColor: color }}>
       <div className="note-section">
@@ -27,7 +29,7 @@ export function Note({ note, id }) {
           className="note-container"
           dangerouslySetInnerHTML={{ __html: content }}
         ></div>
-        {(pathname === "/notes" || pathname === "/labels") && (isPinned ? (
+        {isEitherNotesOrLabelsPage && (isPinned ? (
           <BsPinAngleFill
             className="note-icon"
             onClick={() => {
@@ -69,7 +71,7 @@ export function Note({ note, id }) {
             created on {createdDate}
           </small>
           <div className="note-icons">
-            {pathname === "/notes" || pathname === "/labels" ? (
+            {isEitherNotesOrLabelsPage ? (
               <>
                 <FiEdit2 className="note-icon" onClick={editNoteHandler} />
                 <BiArchiveIn

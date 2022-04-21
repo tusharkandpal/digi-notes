@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const restoreArchiveService = async ({ id, ...note }) => {
-  console.log(id);
   try {
     const { data, status } = await axios.post(
       `/api/archives/restore/${id}`,
