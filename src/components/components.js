@@ -6,5 +6,6 @@ export { Note } from "./note/Note";
 export { Color } from "./color/Color";
 export { Label } from "./label/Label";
 export { Priority } from "./priority/Priority";
+export { Filters } from "./filters/Filters";
 
 
