@@ -3,7 +3,6 @@ import {
   getArchivesService,
   addArchiveService,
   restoreArchiveService,
-  deleteArchiveService
 } from "../services/services";
 import { useAuth, useNotes } from "./context";
 
@@ -43,13 +42,6 @@ const ArchivesProvider = ({ children }) => {
     }
   };
 
-  const deleteArchiveHandler = async (id) => {
-    const { data, status } = await deleteArchiveService(id);
-    if (status === 200) {
-      setArchives(data.archives);
-    }
-  };
-
   return (
     <ArchivesContext.Provider
       value={{
@@ -57,7 +49,6 @@ const ArchivesProvider = ({ children }) => {
         setArchives,
         addArchiveHandler,
         restoreArchiveHandler,
-        deleteArchiveHandler
       }}
     >
       {children}

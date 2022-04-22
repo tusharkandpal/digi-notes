@@ -1,4 +1,4 @@
-import "./Nav.css"
+import "./Nav.css";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiFillPlusCircle } from "react-icons/ai";
@@ -12,11 +12,11 @@ export const Nav = () => {
         className="navbar-icon icon-size"
         onClick={() => displayDispatch({ type: "SIDEBAR_TOGGLE" })}
       />
-      <Link to="/notes">
-        <h3 className="brand-name">
+      <h3 className="brand-name">
+        <Link to="/notes">
           <span className="brand-first-name">Digi</span> Notes
-        </h3>
-      </Link>
+        </Link>
+      </h3>
       <AiFillPlusCircle
         className="add-note-icon icon-size"
         onClick={() =>
