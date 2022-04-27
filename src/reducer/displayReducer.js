@@ -3,6 +3,7 @@ export const displayInitialState = {
   sidebarToggle: false,
   colorToggle: false,
   labelToggle: false,
+  filterToggle: false,
 };
 
 export const displayReducer = (state, { type, payload }) => {
@@ -18,6 +19,9 @@ export const displayReducer = (state, { type, payload }) => {
 
     case "LABEL_TOGGLE":
       return { ...state, labelToggle: payload.labelToggle };
+
+    case "FILTER_TOGGLE":
+      return { ...state, filterToggle: payload.filterToggle };
 
     default:
       return state;

@@ -5,14 +5,18 @@ import {
   Search,
   TextEditor,
   Note,
+  Filters,
 } from "../../components/components";
 import { useNotes } from "../../context/context";
+import { useFilterNotes } from "../../hooks/useFilterNotes";
 
 export function Notes() {
   const { notes } = useNotes();
 
-  const pinnedNotes = notes.filter(({ note }) => note.isPinned);
-  const otherNotes = notes.filter(({ note }) => !note.isPinned);
+  const filteredNotes =  useFilterNotes([...notes]);
+
+  const pinnedNotes = filteredNotes.filter(({ note }) => note.isPinned);
+  const otherNotes = filteredNotes.filter(({ note }) => !note.isPinned);
 
   return (
     <div className="notes">
@@ -45,6 +49,7 @@ export function Notes() {
             )}
           </div>
         </div>
+        <Filters />
       </div>
     </div>
   );

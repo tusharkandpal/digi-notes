@@ -6,13 +6,17 @@ import {
   Search,
   TextEditor,
   Note,
+  Filters,
 } from "../../components/components";
 import { useNotes } from "../../context/context";
+import { useFilterNotes } from "../../hooks/useFilterNotes";
 
 export function Labels() {
   const { notes } = useNotes();
 
-  const allUniqueLabels = notes.reduce(
+  const filteredNotes =  useFilterNotes([...notes]);
+
+  const allUniqueLabels = filteredNotes.reduce(
     (allLabels, initial) => [
       ...allLabels,
       ...initial.note.tags.filter((tag) => !allLabels.includes(tag)),
@@ -34,7 +38,7 @@ export function Labels() {
                 <Fragment key={label}>
                   <h2 className="notes-header">{label.toUpperCase()}</h2>
                   <div className="other-notes">
-                    {notes.map(
+                    {filteredNotes.map(
                       ({ note, _id }) =>
                         note.tags.includes(label) && (
                           <Note
@@ -49,6 +53,7 @@ export function Labels() {
               ))}
           </div>
         </div>
+        <Filters />
       </div>
     </div>
   );

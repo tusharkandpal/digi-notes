@@ -1,0 +1,48 @@
+/* ------------------------ || NOTES FILTERS --------------------------------*/
+.notes-filters {
+  flex: 0 0 14rem;
+}
+.filter-list {
+  list-style: none;
+  padding: 1.5rem;
+}
+.filter-list-item {
+  margin-bottom: 1.3rem;
+}
+.list-filter-clear {
+  float: right;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.list-filter-header {
+  font-weight: 800;
+}
+
+/* ---------------------- || FILTER LIST --------------------------------*/
+.item-label {
+  margin-top: 0.8rem;
+  align-items: center;
+  display: block;
+}
+.item-input {
+  margin-right: 0.3rem;
+}
+.outline-info {
+  border-color: var(--primary-color);
+}
+.outline-info:hover {
+  background-color: var(--primary-color);
+}
+
+/* || MEDIA QUERIES */
+@media screen and (max-width: 430px) {
+  .notes-filters {
+    position: fixed;
+    top: 2.8rem;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+  }
+}
+
