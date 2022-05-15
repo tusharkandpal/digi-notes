@@ -20,6 +20,13 @@ export const authReducer = (state, { type, payload }) => {
         isLoggedIn: true,
       };
 
+    case "SIGNUP":
+      return {
+        ...state,
+        user: payload.user,
+        isLoggedIn: true,
+      };
+
     case "LOGOUT": {
       return {
         user: {},
@@ -30,6 +37,10 @@ export const authReducer = (state, { type, payload }) => {
 
     case "FAILED":
       return { ...state, error: `${payload.path} failed! Please try again.` };
+
+    case "RESET": {
+      return authInitialState;
+    }
 
     default:
       return state;

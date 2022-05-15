@@ -1,10 +1,10 @@
 import "./Note.css";
-import { useLocation } from "react-router-dom";
 import { BsPin, BsPinAngleFill } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiArchiveIn } from "react-icons/bi";
 import { MdUnarchive, MdRestore, MdDeleteForever } from "react-icons/md";
+import { useNotesOrLabelsPage } from "../../hooks/hooks";
 import {
   useNotes,
   useArchives,
@@ -22,8 +22,8 @@ export function Note({ note, id }) {
     restoreFromTrashHandler,
     deleteFromTrashHandler,
   } = useTrash();
-  const { pathname } = useLocation();
   const { displayDispatch } = useDisplay();
+  const [isEitherNotesOrLabelsPage, pathname] = useNotesOrLabelsPage();
 
   const editNoteHandler = () => {
     displayDispatch({
@@ -32,8 +32,6 @@ export function Note({ note, id }) {
     });
     noteDispatch({ type: "SET_EDIT_MODE", payload: { note: { ...note, id } } });
   };
-
-  const isEitherNotesOrLabelsPage = ["/notes", "/labels"].includes(pathname);
 
   const noteCreatedDate = (new Date(createdDate)).toDateString();
 
