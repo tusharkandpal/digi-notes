@@ -9,7 +9,7 @@ import {
   Filters,
 } from "../../components/components";
 import { useNotes } from "../../context/context";
-import { useFilterNotes } from "../../hooks/useFilterNotes";
+import { useFilterNotes } from "../../hooks/hooks";
 
 export function Labels() {
   const { notes } = useNotes();

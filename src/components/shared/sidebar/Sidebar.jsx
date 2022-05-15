@@ -6,6 +6,7 @@ import { MdLabelOutline } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { BsArchive, BsTrash, BsPersonCircle } from "react-icons/bs";
 import { useAuth, useDisplay } from "../../../context/context";
+import { useNotesOrLabelsPage } from "../../../hooks/hooks";
 
 export function Sidebar() {
   const {
@@ -18,10 +19,12 @@ export function Sidebar() {
 
   const {
     authState: {
-      user: { firstName, lastName },
+      user: { firstName, lastName, email },
     },
     logoutHandler,
   } = useAuth();
+
+  const [isEitherNotesOrLabelsPage] = useNotesOrLabelsPage();
 
   return (
     <div
@@ -75,26 +78,33 @@ export function Sidebar() {
             <span className="sidebar-label">Profile</span>
           </li>
         </NavLink>
-        <li
-          className="new-note-item"
-          onClick={() => {
-            displayDispatch({
-              type: "ADD_NOTE_TOGGLE",
-              payload: { addNoteToggle: true },
-            });
-            displayDispatch({ type: "SIDEBAR_TOGGLE" });
-          }}
-        >
-          <h3 className="new-note">Create New Note</h3>
-        </li>
+        {isEitherNotesOrLabelsPage && (
+          <li
+            className="new-note-item"
+            onClick={() => {
+              displayDispatch({
+                type: "ADD_NOTE_TOGGLE",
+                payload: { addNoteToggle: true },
+              });
+              displayDispatch({ type: "SIDEBAR_TOGGLE" });
+            }}
+          >
+            <h3 className="new-note">Create New Note</h3>
+          </li>
+        )}
       </ul>
       <div className="profile-list">
-        <p className="profile-item">
+        <div className="profile-item">
           <span className="avatar">
             <BsPersonCircle className="icon-size" />
           </span>
-          {firstName} {lastName}
-        </p>
+          <div className="profile-details">
+            <p className="profile-name">
+              {firstName || "Guest"} {lastName || "User"}
+            </p>
+            <p className="profile-email">{email}</p>
+          </div>
+        </div>
         <button className="logout-btn" onClick={logoutHandler}>
           <AiOutlineLogout className="icon-size" />
         </button>

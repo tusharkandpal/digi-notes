@@ -41,6 +41,12 @@
   display: flex;
   align-items: center;
 }
+.profile-name {
+  font-weight: 900;
+}
+.profile-email {
+  color: var(--status-online);
+}
 .logout-btn {
   background: transparent;
   border: none;

@@ -1,5 +1,5 @@
-/* ------------------------- || LOGIN MAIN ----------------------- */
-.login-main {
+/* ------------------------- || AUTH MAIN ----------------------- */
+.auth-main {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -13,7 +13,7 @@
   padding: 1.5rem 3rem;
   align-items: center;
 }
-.login-header,
+.auth-header,
 .form-btn {
   margin-bottom: 1.5rem;
 }
@@ -21,8 +21,8 @@
   background-color: var(--primary-color);
   color: var(--nav-title-color);
 }
-.login-header,
-.signup-link {
+.auth-header,
+.auth-link {
   text-align: center;
 }
 .form-invalid-message {
@@ -38,7 +38,6 @@
 }
 
 /* || LINK COLOR OVERRIDE */
-.login-main a {
-    color: var(--card-discount-color);
+.auth-main a {
+  color: var(--card-discount-color);
 }
-

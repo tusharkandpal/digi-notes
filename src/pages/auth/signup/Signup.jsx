@@ -1,11 +1,10 @@
 import "../Auth.css";
 import { Link } from "react-router-dom";
 import { MdDoubleArrow } from "react-icons/md";
-import { BsPersonBadge } from "react-icons/bs";
 import { useAuth } from "../../../context/auth-context";
 
-export function Login() {
-  const { authState, loginHandler } = useAuth();
+export const Signup = () => {
+  const { authState, signupHandler } = useAuth();
   const { error } = authState;
 
   const submitHandler = (e) => {
@@ -16,20 +15,15 @@ export function Login() {
 
     if (!form.checkValidity()) form.classList.add("validate");
     else {
-      loginHandler(email.value, password.value);
+      signupHandler(email.value, password.value);
     }
-  };
-
-  const guestLoginHandler = () => {
-    // Implementing guest login
-    loginHandler("adarshbalika@gmail.com", "adarshBalika123");
   };
 
   return (
     <main className="auth-main">
       <img
-        src="./assets/login-page.svg"
-        alt="login-img"
+        src="./assets/signup-page.svg"
+        alt="signup-img"
         className="homepage-img img-responsive"
       />
       <section className="auth-section">
@@ -39,7 +33,7 @@ export function Login() {
           onSubmit={(e) => submitHandler(e)}
         >
           <div className="form-field">
-            <h3 className="auth-header">Login</h3>
+            <h3 className="auth-header">Signup</h3>
             <label className="form-label required" htmlFor="email">
               Email
             </label>
@@ -51,7 +45,10 @@ export function Login() {
               required
             />
             <p className="form-invalid-message">
-              <i className="fas fa-info-circle"></i> Please enter correct email!
+              <i className="fas fa-info-circle"></i> Please enter an email!
+            </p>
+            <p className="form-valid-message">
+              <i className="fas fa-check-circle"></i> That's right!
             </p>
           </div>
           <div className="form-field">
@@ -64,38 +61,42 @@ export function Login() {
               type="password"
               placeholder="************"
               required
+              minLength="6"
             />
             <p className="form-invalid-message">
-              <i className="fas fa-info-circle"></i> Please enter your password!
+              <i className="fas fa-info-circle"></i> Please enter atleast 6
+              characters!
+            </p>
+            <p className="form-valid-message">
+              <i className="fas fa-check-circle"></i> Strong password!
             </p>
           </div>
           <div className="form-field">
-            <input className="form-checkbox" type="checkbox" id="terms" />
-            <label htmlFor="terms" className="form-label">
-              Remember me
+            <input
+              className="form-checkbox"
+              type="checkbox"
+              id="terms"
+              required
+            />
+            <label htmlFor="terms" className="form-label required">
+              I accept all Terms & Conditions
             </label>
-            <a href="#password-reset" className="form-link">
-              Forgot your password ?
-            </a>
+            <p className="form-checkbox-message">
+              <i className="fas fa-info-circle"></i> You must agree before
+              submitting!
+            </p>
           </div>
           <div className="auth-buttons">
             <button className="btn btn-md primary form-btn" type="submit">
-              Login
-            </button>
-            <button
-              type="button"
-              className="btn btn-sm outline outline-info guest-btn"
-              onClick={guestLoginHandler}
-            >
-              <BsPersonBadge size={13} /> Guest Login
+              Signup
             </button>
           </div>
-          <Link to="/signup">
-            Create new account <MdDoubleArrow />
+          <Link to="/login">
+            Already have an account <MdDoubleArrow />
           </Link>
           {error && <p className="form-error-message">{error}</p>}
         </form>
       </section>
     </main>
   );
-}
+};

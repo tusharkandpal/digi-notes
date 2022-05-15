@@ -32,7 +32,7 @@ export const Homepage = () => {
             </Link>
           ) : (
             <>
-              <Link to="/" className="homepage-signup-btn btn btn-sm primary">
+              <Link to="/signup" className="homepage-signup-btn btn btn-sm primary">
                 Join Now
               </Link>
               <Link to="/login" className="homepage-login-btn">
