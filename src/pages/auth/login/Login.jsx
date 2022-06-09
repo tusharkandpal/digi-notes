@@ -22,7 +22,7 @@ export function Login() {
 
   const guestLoginHandler = () => {
     // Implementing guest login
-    loginHandler("adarshbalika@gmail.com", "adarshBalika123");
+    loginHandler("tanuj123@gmail.com", "kandpal123");
   };
 
   return (
